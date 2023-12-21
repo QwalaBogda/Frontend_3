@@ -103,6 +103,7 @@
                 <input id="name" required class="input" type="text" placeholder="ФИО">
             </div>
 
+            <!-- Динамически добавленная ячейка -->
             <!-- <div class="form__cell">
                 <label for="email" class="label form__label">Email</label>
                 <input id="email" value="text@gm.com"  class="input" type="text" placeholder="Email">
@@ -114,7 +115,42 @@
         </form>
     </div>
     <script>
+        // Создаем новую ячейку (form__cell)
+        const newFormCell = document.createElement('div');
+        newFormCell.className = 'form__cell';
 
+        // Создаем новый label
+        const newLabel = document.createElement('label');
+        newLabel.setAttribute('for', 'email');
+        newLabel.className = 'label form__label';
+        newLabel.textContent = 'Email';
+
+        // Создаем новый input
+        const newInput = document.createElement('input');
+        newInput.id = 'email';
+        newInput.value = generateRandomText(); // Генерируем рандомный текст
+        newInput.className = 'input';
+        newInput.type = 'text';
+        newInput.placeholder = 'Email';
+
+        // Добавляем label и input в ячейку
+        newFormCell.appendChild(newLabel);
+        newFormCell.appendChild(newInput);
+
+        // Добавляем ячейку в форму
+        const form = document.querySelector('.form');
+        form.appendChild(newFormCell);
+
+        // Генератор случайного текста
+        function generateRandomText() {
+            const letters = 'abcdefghijklmnopqrstuvwxyz';
+            let randomText = '';
+            for (let i = 0; i < 8; i++) {
+                randomText += letters[Math.floor(Math.random() * letters.length)];
+            }
+            return `${randomText}@example.com`;
+        }
     </script>
 </body>
 </html>
+
