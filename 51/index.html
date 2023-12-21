@@ -56,6 +56,15 @@
         }
 
     </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 51</title>
+    <style>
+        /* Ваши стили остаются без изменений */
+    </style>
 </head>
 <body>
     <div class="container">
@@ -64,7 +73,7 @@
         <button class="button js-button-2" type="button">Добавить через insertAdjacentHTML</button>
 
         <div class="items">
-
+            <!-- Исходный блок -->
             <div class="item">
                 <div class="item__bg"></div>
                 <div class="item__body">
@@ -73,7 +82,6 @@
                     <div class="item__footer">Read More</div>
                 </div>
             </div>
-
         </div>
 
     </div>
@@ -82,12 +90,40 @@
         const wrappers = document.querySelector('.items')
 
         document.querySelector('.js-button-1').addEventListener('click', () => {
+            // Создаем новый блок item с использованием createElement
+            const newItem = document.createElement('div');
+            newItem.classList.add('item');
 
-        })
+            // Добавляем содержимое внутрь нового блока
+            newItem.innerHTML = `
+                <div class="item__bg"></div>
+                <div class="item__body">
+                    <h2 class="item__name">New Item</h2>
+                    <p class="item__content">This is a new item created with createElement.</p>
+                    <div class="item__footer">Read More</div>
+                </div>
+            `;
+
+            // Добавляем новый блок в общий контейнер
+            wrappers.appendChild(newItem);
+        });
 
         document.querySelector('.js-button-2').addEventListener('click', () => {
+            // Создаем строку HTML с использованием insertAdjacentHTML
+            const newItemHTML = `
+                <div class="item">
+                    <div class="item__bg"></div>
+                    <div class="item__body">
+                        <h2 class="item__name">New Item</h2>
+                        <p class="item__content">This is a new item created with insertAdjacentHTML.</p>
+                        <div class="item__footer">Read More</div>
+                    </div>
+                </div>
+            `;
 
-        })
+            // Добавляем строку HTML в конец общего контейнера
+            wrappers.insertAdjacentHTML('beforeend', newItemHTML);
+        });
     </script>
 </body>
 </html>
